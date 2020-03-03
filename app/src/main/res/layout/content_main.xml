@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <TextView
+        android:id="@+id/titleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/titleLabelText"
+        android:textSize="@dimen/titleFontSize"
+        app:layout_constraintBottom_toTopOf="@id/octaveNumberLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+
+    <TextView
+        android:id="@+id/octaveNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/labelFontSize"
+        app:layout_constraintBottom_toTopOf="@id/scaleLabel"
+        app:layout_constraintTop_toBottomOf="@id/titleLabel"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/scaleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/scaleLabelFontSize"
+        android:textStyle="bold"
+        android:onClick="speakScale"
+        app:layout_constraintBottom_toTopOf="@id/rightHandFingeringLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/octaveNumberLabel"
+        />
+
+    <TextView
+        android:id="@+id/rightHandFingeringLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/labelFontSize"
+        app:layout_constraintBottom_toTopOf="@id/rightHandStyleLabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/scaleLabel"
+        />
+
+    <TextView
+        android:id="@+id/rightHandStyleLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/labelFontSize"
+        app:layout_constraintBottom_toTopOf="@id/nextButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rightHandFingeringLabel"
+        />
+
+    <Button
+        android:id="@+id/nextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="@dimen/nextButtonWidth"
+        android:height="@dimen/nextButtonHeight"
+        android:onClick="generateNext"
+        android:text="@string/nextButtonText"
+        android:textSize="@dimen/nextButtonFontSize"
+        app:layout_constraintBottom_toTopOf="@id/tuningButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/rightHandStyleLabel"
+        />
+
+    <Button
+        android:id="@+id/tuningButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="440 hz"
+        android:onClick="playTuningPitch"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/metronomeButton"
+        app:layout_constraintTop_toBottomOf="@id/nextButton"
+        />
+
+    <Button
+        android:id="@+id/metronomeButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="metronomeOnOff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/tuningButton"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/nextButton"
+        />
+
+    <SeekBar
+        android:id="@+id/tempoSeekBar"
+        android:layout_width="@dimen/seekBarWidth"
+        android:layout_height="@dimen/seekBarHeight"
+        app:layout_constraintTop_toBottomOf="@+id/metronomeButton"
+        app:layout_constraintLeft_toRightOf="@id/tuningButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

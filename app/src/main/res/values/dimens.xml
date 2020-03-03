@@ -1,0 +1,11 @@
+<resources>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="scaleLabelFontSize">55sp</dimen>
+    <dimen name="labelFontSize">40sp</dimen>
+    <dimen name="titleFontSize">60sp</dimen>
+    <dimen name="nextButtonFontSize">36sp</dimen>
+    <dimen name="nextButtonWidth">150dp</dimen>
+    <dimen name="nextButtonHeight">75dp</dimen>
+    <dimen name="seekBarWidth">250dp</dimen>
+    <dimen name="seekBarHeight">25dp</dimen>
+</resources>

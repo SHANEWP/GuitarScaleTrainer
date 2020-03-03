@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Guitar Scale Trainer (Panagakos)</string>
+    <string name="action_settings">Settings</string>
+    <string name="titleLabelText">Guitar Scale Trainer</string>
+    <string name="nextButtonText">Next</string>
+    <string name="okay">Okay</string>
+    <string name="tempo">Tempo</string>
+    <string name="optionsButtonText">Options</string>
+</resources>
