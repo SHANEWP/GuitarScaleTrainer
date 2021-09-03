@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         RHFingering.setText(fingering);
 
         //checks if the right hand fingering includes the thumb
-        for(int i=0; i<fingering.length();i++) {
+        for(int i = 0; i < fingering.length(); i++) {
             if(fingering.charAt(i) == 'p')
                 hasThumb = true;
         }
@@ -303,7 +303,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setBackgroundResource(android.R.drawable.btn_default);
             }
 
-        }catch(NumberFormatException e){
+        } catch(NumberFormatException e) {
             e.printStackTrace();
         }
     }
@@ -315,11 +315,11 @@ public class MainActivity extends AppCompatActivity {
      * @param duration The length of the track in seconds
      */
     private void generateSound(int frequency, int duration) {
-        int sampleRate = 44100;
+        int sampleRate = 44100; //Standard sample rate
         byte[] soundData = new byte[sampleRate * duration];
 
         for(int i = 0; i < soundData.length; i++) {
-            double fundamental = Math.sin(2 * Math.PI * frequency * i / sampleRate);
+            double fundamental = Math.sin((2 * Math.PI * frequency * i) / sampleRate);
             soundData[i] = (byte)(fundamental * 255);
         }
 
@@ -353,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                 button.setBackgroundResource(android.R.drawable.btn_default);
             }
 
-        }catch(NumberFormatException e){
+        } catch(NumberFormatException e){
             e.printStackTrace();
         }
     }
@@ -367,31 +367,31 @@ public class MainActivity extends AppCompatActivity {
         int duration = 60;//Length of the track in seconds
         byte[] soundData = new byte[sampleRate * duration];//total samples
         int samplesPerBeat = soundData.length/bpm;
-        int tickLength = 1000; //number of samples for the tick sound
+        int tickFrequency = 14;
+        int tickLength = 1000;//number of samples for the tick sound
         int silenceLength = samplesPerBeat - tickLength;//length in samples
-        double[] tick = new double[tickLength];
-
+        double[] tick = new double[tickLength];//Stores the sound data for the tick sound
 
         //Creates a sine wave for the tick sound
         for(int i=0; i < tickLength; i++){
-            tick[i] = Math.sin(2*Math.PI*i*14/tickLength);//14 is the frequency of the tick
+            tick[i] = Math.sin((2 * Math.PI * i * tickFrequency) / tickLength);
         }
 
-        for(int tickCounter=0, silenceCounter=0, soundDataCounter=0;soundDataCounter<soundData.length; soundDataCounter++){
-            if(tickCounter<tickLength)//fills up the array with the tick data
+        for(int tickCounter = 0, silenceCounter = 0, soundDataCounter = 0; soundDataCounter < soundData.length; soundDataCounter++){
+            if(tickCounter < tickLength)//fills up the array with the tick data
             {
-                soundData[soundDataCounter]=(byte) (tick[tickCounter]*255);
+                soundData[soundDataCounter] = (byte) (tick[tickCounter] * 255);
                 tickCounter++;
             }
-            else if(silenceCounter<silenceLength)//when tick data is finished entering fill remaining space with silence before next beat
+            else if(silenceCounter < silenceLength)//when tick data is finished entering fill remaining space with silence before next beat
             {
-                soundData[soundDataCounter]=(byte) 0;
+                soundData[soundDataCounter] = (byte) 0;
                 silenceCounter++;
             }
             else//resets the counters for tick and silence
             {
-                tickCounter=0;
-                silenceCounter=0;
+                tickCounter = 0;
+                silenceCounter = 0;
             }
         }
         metronomeTrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate, AudioFormat.CHANNEL_OUT_DEFAULT,
@@ -451,7 +451,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * If there is a '#' it is replaced with the word sharp
-     * If there is a 'b' it is replaced with the word flat
+     * If there is a 'b' it is replaced with the word flat etc.
      * @param text text that will be passed to textToSpeech
      * @return the string with the proper words in it
      */
@@ -474,7 +474,7 @@ public class MainActivity extends AppCompatActivity {
         }
         String s = "";
         for(int i=0; i<newText.size(); i++)
-            s+=newText.get(i);
+            s += newText.get(i);
         return s;
     }
 
